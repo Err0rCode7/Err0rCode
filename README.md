@@ -10,4 +10,4 @@
 
 ![result](https://github.com/Err0rCode7/assignment_/blob/master/result.PNG?raw=true)
 
-![result2](/assingment_/result.png)
+![result2](result.png)
