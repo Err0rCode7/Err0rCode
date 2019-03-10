@@ -2,9 +2,10 @@
 
 ### 1조 : 전승원(2015040044), 신영호()
 
-- 빨강
-    - 녹색
-    - 바보    
-
+-  assignment_1.py
+     -  -o:정렬 방식, A/오름차순, D/내림차순
+     -  -i:정렬할 배열
 
 <pre><code>$ python3 assignment_1.py -o A -i 1 2 5 4 6 0 10 </code></pre>
+
+
