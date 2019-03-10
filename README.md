@@ -7,7 +7,4 @@
      -  -i:정렬할 배열
 
 <pre><code>$ python3 assignment_1.py -o A -i 1 2 5 4 6 0 10 </code></pre>
-
-![result](https://github.com/Err0rCode7/assignment_/blob/master/result.PNG?raw=true)
-
-![result2](./result.PNG)
+![result](./result.PNG)
