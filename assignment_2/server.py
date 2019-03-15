@@ -13,13 +13,11 @@ def run_server(port=4000):
 
         conn, addr = s.accept()
         msg = conn.recv(1024)
-        a = msg.decode()
-    
-        print(a) ## msg is a binary data, so we need to decode it
+        print(msg.decode())
 
+        a = [ str(x) for x in msg.decode()[::-1] ] ## reverse msg
         
-
-        conn.sendall(msg)
+        conn.sendall(''.join(a).encode())   ## To send string , we need to encode it
         conn.close()
 
 if __name__ == '__main__':

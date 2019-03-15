@@ -11,8 +11,8 @@ def run(host, port) :
         s.sendall(line.encode())
         resp = s.recv(1024)
         
-        b = [str(x) for x in resp.decode()[::-1]]
-        print(''.join(b))
+        b = resp.decode()
+        print(b)
 
 
 if __name__ == '__main__' :
