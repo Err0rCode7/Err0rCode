@@ -3,9 +3,9 @@
 ### 기기괴괴 조 : 전승원(2015040044), 신영호(2015040035)
 
 -  client.py
-     -  -i: 서버아이피,  -p: 포트번호, -f 파일이름
+     -  -i: 서버아이피,  -p: 포트번호, -f: 파일이름
 -  server.py
-	 -  -p: 포트번호, -d 파일 디렉토리
+	 -  -p: 포트번호, -d: 파일 디렉토리
 
 <pre><code>python server.py -p 8888 -d /home/famous/ </code></pre>
 <pre><code>python client.py -i 127.0.0.1 -p 8888 -f test.txt </code></pre>
