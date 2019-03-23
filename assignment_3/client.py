@@ -10,16 +10,19 @@ def run(host, port, file) :
         s.sendall(file.encode())
 
         data = s.recv(1024)
-        
-        if not data : # 전송받은 데이터가 없으면 종료합니다.
-            print('%s 파일 전송오류' % file)
+        data = data.decode()
+        if data == "-1" : # 요청한 파일이 없으면 종료합니다.
+            print("요청한 파일이 존재하지 않습니다.")
             return
+        FileSize = int(data)
+        msg = "OK"
+        s.sendall(msg.encode()) # 서버에게 OK 사인을 전송합니다.
         
+        data = s.recv(FileSize) # 파일의 크기만큼 전송을 받습니다.
+
         with open(file, 'ab') as f: 
             try:
-                while data: # 전송받을 데이터가 남아있을때 까지 파일을 추가모드로 작성합니다.
-                    f.write(data) 
-                    data = s.recv(1024)
+                f.write(data) # 파일을 만듭니다.
             except Exception as e:
                 print(e)
         

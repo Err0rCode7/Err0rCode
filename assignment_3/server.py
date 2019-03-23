@@ -16,20 +16,30 @@ def run_server(dir, port=4000):
 
         fileName = msg.decode()
         fileDir = dir + "\\" + fileName
-        fileSize = os.path.getsize(fileDir) # 파일의 크기를 가져옵니다.
+
         
-        if not os.path.exists(fileDir) : # 파일이 존재하지 않으면 종료
+        ItsOk = os.path.exists(fileDir)
+
+        if not ItsOk : # 파일이 존재하지 않으면 -1을 전송하고 종료
+            conn.send("-1".encode())
+            print("요청받은 파일이 존재하지 않습니다.")
             return
         
+        fileSize = os.path.getsize(fileDir) # 파일의 크기를 읽어옵니다.
 
         print ("요청받은 fileName : %s" % fileDir)
         print ("요청받은 fileSize : %d" % fileSize)
+
+        conn.send(str(fileSize).encode()) # 파일의 크기를 클라이언트에게 전송합니다.
+
+        msg = conn.recv(1024)
+        msg = msg.decode()
+        if msg != "OK" : # 클라이언트에게 파일이 전송이 잘 이루어지지 않았으면 종료합니다.
+            return
         with open(fileDir,'rb') as f : # 이진수로 읽기전용으로 파일을 오픈합니다.
             try:
-                data = f.read()
-                while data: # 파일 내용이 없을때까지 다 보냅니다.
-                    conn.send(data) 
-                    data = f.read() 
+                data = f.read(fileSize) # 파일의 크기만큼 읽어온 후 클라이언트에게 전송합니다.
+                conn.send(data) 
             except Exception as e :
                 print(e)
 

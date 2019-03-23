@@ -11,3 +11,5 @@
 <pre><code>python client.py -i 127.0.0.1 -p 8888 -f test.txt </code></pre>
 
 ![result](./result.PNG)
+
+![result2](./result2.PNG)
