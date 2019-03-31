@@ -8,7 +8,7 @@
 	- Python에서 프로세스 및 스레드를 사용하는 방법
 	
 
-![result](./result.PNG)
+![result](./result1.PNG)
 
 ![result2](./result2.PNG)
 
