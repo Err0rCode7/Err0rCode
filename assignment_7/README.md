@@ -9,8 +9,8 @@
 	  주고받은 TCP 패킷을 캡쳐해서 사진첨부(문자열은 팀 이름을 전달)
 	- 보고서는 3장 내로 작성(1~2장 : wireshark 조사, 3장 : 패킷 캡쳐 사진 및 설명)
 	
-![result2](./result1.PNG)
+![result](./result1.PNG)
 
-![result2](./result2.PNG)
+![result](./result2.PNG)
 
-![result2](./result3.PNG)
+![result](./result3.PNG)
