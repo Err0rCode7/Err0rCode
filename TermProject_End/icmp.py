@@ -9,7 +9,7 @@ TimeOut, TTL = 1 , 0
 TTLMax, MyId, data = 30, random.randrange(3000,5000), '' 
 ip_length, icmp_length, udp_length, _length = 20, 8, 8, 0
 source_ip, dest_ip, protocol = 0, 0, 0
-port, beforetime = 33500, 0
+port, beforetime = random.randrange(33500,33600), 0
 
 # Make Checksum
 def make_checksum(header) :
@@ -201,15 +201,9 @@ def Traceroute (mySocket):
 
         if s1 is not None and type(s1) == type('str'):
             if type(sourceAdress) == type((0,)) :               
-                if protocol == socket.IPPROTO_UDP :
-                    sys.stdout.write("[%s, %s] port : %d" % (s1, s2, port))
-                else :
-                    sys.stdout.write("[%s, %s]" % (s1, s2))   
+                sys.stdout.write("[%s, %s]" % (s1, s2))   
             else:
-                if protocol == socket.IPPROTO_UDP :
-                    sys.stdout.write("[%s] port : %d" % (s1, port))
-                else :
-                    sys.stdout.write("[%s]" % (s1))
+                sys.stdout.write("[%s]" % (s1))
                 
         sys.stdout.write("\n")
         if reply :    
@@ -225,14 +219,14 @@ if __name__ == '__main__' :
     parser.add_argument('-t', type=float, required=False, metavar='recv timeout', help='timeout')
     parser.add_argument('-I', help='ICMP',action='store_true')  
     parser.add_argument('-U', help='UDP',action="store_true")
-    parser.add_argument('-p', type=int, required=False, metavar='port', help='port', default=33500)
+    parser.add_argument('-p', type=int, required=False, metavar='port', help='port', default=random.randrange(33500,33600))
     args = parser.parse_args()
 
     source_ip = '0.0.0.0' 
     dest_ip = socket.gethostbyname(args.domain)
     protocol = socket.IPPROTO_ICMP # protocol default
     _length = icmp_length # default
-    protoname = "ICMP"
+
     try:
         mySocket = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_RAW)
 
@@ -261,9 +255,5 @@ if __name__ == '__main__' :
     print("tracerout to ", args.domain, " (",dest_ip,"), ", TTLMax, " hops max,", args.length,
      "byte packets" )
 
-    print("Request Protocol : ",protoname,", TimeOut set : " ,TimeOut,"s",end='')
-    if protocol == socket.IPPROTO_UDP :
-        print(", Start port : ", port)
-    else :
-        print()
+
     Traceroute(mySocket)
